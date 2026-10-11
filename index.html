@@ -2,482 +2,338 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Una disculpita para Marcita 💗</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Una disculpita para Marcita 💗</title>
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-        body {
-            font-family: 'Comic Sans MS', cursive;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px 0;
-            background: linear-gradient(
-                -45deg, #ee7752, #e73c7e, #ff69b4, #ff1493
-            );
-            background-size: 400% 400%;
-            animation: gradientShift 8s ease infinite;
-            overflow-x: hidden;
-            position: relative;
-        }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      padding: 20px;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #ffd6e7, #ffeaf2, #e9d5ff);
+      color: #854568;
+    }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .card {
+      position: relative;
+      width: 100%;
+      max-width: 480px;
+      min-height: 410px;
+      padding: 35px 25px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 15px 45px rgba(185, 105, 151, 0.22);
+      text-align: center;
+      z-index: 2;
+      animation: appear 0.8s ease;
+    }
 
-        .bg-heart {
-            position: fixed;
-            font-size: 2em;
-            opacity: 0.2;
-            pointer-events: none;
-            animation: floatAround 15s ease-in-out infinite;
-        }
+    .main-heart {
+      font-size: 58px;
+      margin-bottom: 10px;
+      animation: heartbeat 1.5s infinite;
+    }
 
-        @keyframes floatAround {
-            0%, 100% { transform: translate(0, 0) rotate(0); }
-            25% { transform: translate(50px, -50px) rotate(45deg); }
-            50% { transform: translate(80px, 30px) rotate(90deg); }
-            75% { transform: translate(-30px, -30px) rotate(45deg); }
-        }
+    h1 {
+      font-size: 28px;
+      margin: 10px 0 18px;
+      color: #d94f91;
+    }
 
-        .container {
-            text-align: center;
-            padding: 35px 25px;
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(255, 105, 180, 0.45);
-            max-width: 680px;
-            width: 92%;
-            border: 3px solid rgba(255, 105, 180, 0.3);
-            position: relative;
-            z-index: 10;
-            animation: floatIn 1s ease-out;
-        }
+    #mainText {
+      font-size: 20px;
+      line-height: 1.6;
+      min-height: 90px;
+      margin: 18px 0;
+    }
 
-        @keyframes floatIn {
-            from {
-                opacity: 0;
-                transform: translateY(-30px) scale(0.95);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #986782;
+      margin: 12px 0 25px;
+    }
 
-        #mainText {
-            font-size: 2em;
-            color: #e73c7e;
-            margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.2);
-            line-height: 1.5;
-            overflow-wrap: anywhere;
-        }
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      min-height: 55px;
+      margin-top: 20px;
+    }
 
-        .subtitle {
-            font-size: 1em;
-            color: #a64d79;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
+    button {
+      border: none;
+      border-radius: 25px;
+      padding: 13px 21px;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: inherit;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
 
-        .buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            position: relative;
-            min-height: 150px;
-            padding: 15px 5px;
-        }
+    button:hover {
+      transform: scale(1.05);
+    }
 
-        button {
-            font-family: 'Comic Sans MS', cursive;
-            font-size: 1.05em;
-            padding: 15px 24px;
-            border: none;
-            border-radius: 40px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: all 0.25s ease;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        }
+    #yesBtn {
+      background: #f28bb9;
+      color: white;
+      box-shadow: 0 5px 14px rgba(242, 139, 185, 0.3);
+    }
 
-        #yesBtn {
-            background: linear-gradient(135deg, #ff69b4, #ff1493);
-            color: white;
-            position: relative;
-            z-index: 5;
-        }
+    #noBtn {
+      background: #f5e5ee;
+      color: #a65d83;
+    }
 
-        #yesBtn:hover {
-            transform: translateY(-4px) scale(1.06);
-        }
+    #emojiContainer {
+      font-size: 28px;
+      margin: 15px 0;
+      line-height: 1.8;
+    }
 
-        #noBtn {
-            background: linear-gradient(135deg, #ffb6c1, #ff69b4);
-            color: white;
-            position: absolute;
-            left: 70%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            white-space: nowrap;
-        }
+    .hidden {
+      display: none;
+    }
 
-        #clickCount {
-            margin-top: 12px;
-            color: #e73c7e;
-            font-weight: bold;
-            line-height: 1.5;
-            min-height: 30px;
-        }
+    footer {
+      margin-top: 24px;
+      font-size: 12px;
+      color: #bb8aa5;
+    }
 
-        #emojiContainer {
-            font-size: 2.5em;
-            margin-top: 20px;
-            line-height: 1.7;
-            animation: bounce 1s ease infinite;
-        }
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      font-size: 22px;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatUp linear forwards;
+      opacity: 0.8;
+    }
 
-        .hidden {
-            display: none;
-        }
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-        .heart {
-            position: fixed;
-            font-size: 2em;
-            pointer-events: none;
-            z-index: 1000;
-            animation: floatUp 4s ease-in forwards;
-        }
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      to {
+        transform: translateY(-110vh) rotate(35deg);
+        opacity: 0;
+      }
+    }
 
-        @keyframes floatUp {
-            0% {
-                opacity: 1;
-                transform: translateY(0) rotate(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-90vh) rotate(360deg);
-            }
-        }
+    @media (max-width: 400px) {
+      .card {
+        padding: 28px 18px;
+      }
 
-        .shake {
-            animation: shake 0.4s;
-        }
+      h1 {
+        font-size: 24px;
+      }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
+      #mainText {
+        font-size: 18px;
+      }
 
-        .footer {
-            margin-top: 20px;
-            color: #b85c86;
-            font-size: 0.9em;
-        }
-
-        @media (max-width: 600px) {
-            .container {
-                padding: 28px 18px;
-            }
-
-            #mainText {
-                font-size: 1.6em;
-            }
-
-            .subtitle {
-                font-size: 0.95em;
-            }
-
-            button {
-                font-size: 0.95em;
-                padding: 13px 18px;
-            }
-
-            .buttons {
-                min-height: 180px;
-            }
-
-            #emojiContainer {
-                font-size: 2em;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-            }
-        }
-    </style>
+      button {
+        padding: 12px 17px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- Corazoncitos de fondo -->
-    <div class="bg-heart" style="top:10%;left:8%;">❤️</div>
-    <div class="bg-heart" style="top:70%;left:85%;animation-delay:2s;">💖</div>
-    <div class="bg-heart" style="top:25%;left:88%;animation-delay:4s;">💕</div>
-    <div class="bg-heart" style="top:75%;left:10%;animation-delay:1s;">💗</div>
-    <div class="bg-heart" style="top:12%;left:50%;animation-delay:3s;">💝</div>
+  <main class="card">
+    <div class="main-heart">💗</div>
+
+    <h1>Para mi Marcita bonita</h1>
+
+    <div id="mainText">
+      Marcita bonita, ¿me perdonas? 🥺💗
+    </div>
+
+    <p class="subtitle" id="subtitle">
+      Te hice esta pequeña sorpresita porque quiero pedirte perdón
+      y recordarte lo muchísimo que te amo. 💌
+    </p>
+
+    <div id="emojiContainer" class="hidden"></div>
+
+    <div class="buttons" id="buttonsContainer">
+      <button id="yesBtn">Sí, te perdono 💗</button>
+      <button id="noBtn">Todavía no 😾</button>
+    </div>
+
+    <footer id="footerText">
+      Hecho con cariño, especialmente para ti. 🌷
+    </footer>
+  </main>
+
+  <script>
+    const mainText = document.getElementById("mainText");
+    const subtitle = document.getElementById("subtitle");
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+    const buttonsContainer = document.getElementById("buttonsContainer");
+    const emojiContainer = document.getElementById("emojiContainer");
+    const footerText = document.getElementById("footerText");
+
+    const sorryMessages = [
+      "Marcita bonita, ¿me perdonas? 🥺💗",
+      "Perdón por dejarte esperando para jugar Roblox. 😭💕",
+      "Estaba esperando que mi papá se fuera y me ganó el sueño. 🥹",
+      "Cuando desperté, te escribí porque todavía quería jugar contigo. 💗",
+      "Pero nuestros horarios terminaron haciendo de las suyas. 😭🎮",
+      "Me da penita que te hayas quedado esperando por mí. 🥺",
+      "Nunca quise hacerte sentir ignorada, mi niña bonita. 💌",
+      "De verdad tenía muchas ganas de compartir ese ratito contigo. 🎀",
+      "Al final te debía una partida y terminé debiéndote una disculpa. 😭",
+      "Ojalá hubiera podido organizarme mejor para no hacerte esperar. 💗",
+      "Disfruto mucho los momentos que compartimos, incluso cuando solo jugamos. 🧸",
+      "Hasta una partida de Roblox se vuelve especial cuando la comparto contigo. 🎮💕",
+      "Perdón por quedarme dormido justo cuando queríamos jugar. 🥹",
+      "La próxima vez quiero organizarme mejor para que podamos disfrutar sin apuros. 🌷",
+      "No quería que terminaras la noche molesta conmigo. 💖",
+      "Me encanta tenerte en mis días, incluso cuando solo hablamos un ratito. 💌",
+      "Gracias por las risas, las conversaciones y cada momento que compartimos. 🫶",
+      "Eres una personita muy especial para mí, Marcita. 💗",
+      "Quiero seguir creando recuerdos bonitos contigo, poquito a poquito. 🌸",
+      "No siempre me salen las cosas bien, pero quiero aprender de mis errores. 🥺",
+      "Quiero demostrarte con mis acciones lo mucho que me importas. 💕",
+      "Ojalá pudiera darte un abrazo y pedirte perdón en persona. 🫂",
+      "Prometo poner más atención a nuestros horarios para no dejarte esperando. 🎮",
+      "Y sí, todavía tenemos una partidita pendiente JAJAJA. 😭💗",
+      "Quiero recuperar ese ratito contigo y hacer que sea bonito. 🧸",
+      "Gracias por tomarte el tiempo de leer esta pequeña disculpa. 💌",
+      "Espero que podamos volver a reírnos juntos muy pronto. 🌷",
+      "Te mando un abrazo enorme, mi niña bonita. 💖",
+      "Nunca olvides lo muchísimo que te amo, Marcita. 🥹💕",
+      "Con mucho cariño, de alguien que te ama y todavía te debe una partida. 💗🎮"
+    ];
+
+    let messageIndex = 0;
+    let noMoves = 0;
+
+    function showNextMessage() {
+      if (messageIndex < sorryMessages.length - 1) {
+        messageIndex++;
+      } else {
+        messageIndex = 0;
+      }
+
+      mainText.textContent = sorryMessages[messageIndex];
+    }
+
+    function moveNoButton() {
+      noMoves++;
+      showNextMessage();
+
+      const padding = 15;
+      const maxX = Math.max(
+        padding,
+        window.innerWidth - noBtn.offsetWidth - padding
+      );
+      const maxY = Math.max(
+        padding,
+        window.innerHeight - noBtn.offsetHeight - padding
+      );
+
+      noBtn.style.position = "fixed";
+      noBtn.style.left = Math.random() * maxX + "px";
+      noBtn.style.top = Math.random() * maxY + "px";
+      noBtn.style.zIndex = "10";
+
+      if (noMoves >= 3) {
+        noBtn.textContent = "¿Segurita? 🥺";
+      }
 
-    <main class="container">
+      if (noMoves >= 6) {
+        noBtn.textContent = "Dame una oportunidad 💗";
+      }
+    }
 
-        <div id="mainText">
-            Marcita bonita, ¿me perdonas? 🥺💗
-        </div>
+    noBtn.addEventListener("mouseenter", moveNoButton);
 
-        <p class="subtitle">
-            Hice esta pequeña página para ti, porque quiero
-            recordarte algo que nunca quiero que olvides:
-            lo muchísimo que te amo. 💌
-        </p>
+    noBtn.addEventListener("click", function () {
+      moveNoButton();
+    });
 
-        <div class="buttons">
-            <button id="yesBtn">Sí, te perdono 💗</button>
-            <button id="noBtn">Todavía no 😾</button>
-        </div>
+    yesBtn.addEventListener("click", function () {
+      mainText.innerHTML =
+        "¡AY, MARCITA! 🥹💗<br>" +
+        "Gracias por leer mi disculpita, mi niña bonita.";
 
-        <div id="clickCount" aria-live="polite"></div>
-        <div id="emojiContainer" class="hidden"></div>
+      subtitle.textContent =
+        "Te amo muchísimo, más de lo que a veces sé expresar. " +
+        "Gracias por formar parte de mis días y regalarme momentos bonitos. " +
+        "Quiero seguir compartiendo risas, juegos y muchos recuerdos contigo. 💌";
 
-        <p class="footer" id="footerText">
-            Hecho con mucho cariño, especialmente para ti. 🌷
-        </p>
+      emojiContainer.innerHTML = "💗 🧸 🎮 🌷 ✨ 💌";
+      emojiContainer.classList.remove("hidden");
 
-    </main>
+      buttonsContainer.style.display = "none";
+      noBtn.style.display = "none";
 
-    <script>
-        const mainText = document.getElementById("mainText");
-        const yesBtn = document.getElementById("yesBtn");
-        const noBtn = document.getElementById("noBtn");
-        const emojiContainer = document.getElementById("emojiContainer");
-        const clickCount = document.getElementById("clickCount");
-        const buttonsContainer = document.querySelector(".buttons");
-        const subtitle = document.querySelector(".subtitle");
-        const footerText = document.getElementById("footerText");
+      footerText.textContent =
+        "Hecho con todo mi cariño, especialmente para mi Marcita bonita. 💗";
 
-        const sorryMessages = [
-            "Marci bonita, ¿me perdonas? 🥺💗",
+      for (let i = 0; i < 18; i++) {
+        setTimeout(createHeart, i * 100);
+      }
+    });
 
-            "Perdón por dejarte esperando para jugar Roblox 😭💕",
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "floating-heart";
 
-            "Estaba esperando que mi papá se fuera y me ganó el sueño 🥹",
+      const hearts = ["💗", "💕", "💖", "💘", "🌸", "✨", "🩷"];
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
 
-            "Desperté y te escribí todo desesperado porque quería hablar contigo 💗",
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 3) + "s";
+      heart.style.fontSize = (16 + Math.random() * 22) + "px";
 
-            "Luego nuestros horarios volvieron a trolearnos JAJAJA 🎮",
+      document.body.appendChild(heart);
 
-            "Me apena que hayas estado esperando por mí, bonita 🥺",
+      setTimeout(function () {
+        heart.remove();
+      }, 6500);
+    }
 
-            "No quería hacerte sentir ignorada. De verdad, lo siento 💌",
-
-            "Sí tenía muchas ganas de jugar contigo, Marcita 🎀",
-
-            "Te debía una partida y terminé debiéndote una disculpa 😭💗",
-
-            "También quiero hablarte de algo que pasó ayer, mi niña 🌷",
-
-            "Sé que esa foto te hizo sentir insegura, y me importa cómo te sentiste 🫂",
-
-            "Me pidieron editar esa foto para hacer un meme. Para mí fue solamente eso 💌",
-
-            "No quiero minimizar lo que sentiste ni hacer como si no importara 🥺",
-
-            "Quiero que podamos hablar de estas cosas con confianza y cariño 💗",
-
-            "No tienes que compararte con nadie para saber que eres importante para mí 🌷",
-
-            "No quiero que una foto te haga dudar de todo el cariño que te tengo 💕",
-
-            "No quiero que sientas que tienes que competir con alguien más 🧸",
-
-            "Quiero escucharte cuando algo te preocupe, no que te guardes lo que sientes 💌",
-
-            "No puedo prometer que nunca habrá malentendidos, pero sí que quiero hablarlos contigo 💗",
-
-            "Quiero demostrarte con mis acciones que me importas muchísimo 🥹",
-
-            "No quiero que tengas que adivinar lo que siento por ti. Quiero decírtelo y demostrártelo 💖",
-
-            "Te amo por quien eres, Marcita, no por compararte con nadie 🌷",
-
-            "Gracias por formar parte de mis días y regalarme tantos momentos bonitos 🧸",
-
-            "Quiero cuidar lo bonito que tenemos y aprender de las cosas que nos pasan 💌",
-
-            "Y sí, todavía te debo esa partidita de Roblox JAJAJA 🎮😭",
-
-            "¿Me das otra oportunidad para organizarme mejor y jugar contigo? 💗",
-
-            "No quiero que esta disculpa se quede solo en palabras; quiero hacerlo mejor 🥺",
-
-            "Te mando un abrazo enorme, de esos que hacen sentir un poquito más de calma 🫂💖",
-
-            "Eres alguien muy especial para mí, Marci bonita 🌸",
-
-            "Te amo muchísimo. Gracias por tomarte un ratito para leerme 💗"
-        ];
-
-        let currentMessageIndex = 0;
-        let noClickCount = 0;
-
-        const isMobile =
-            /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
-
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-
-            const hearts = ["❤️", "💖", "💕", "💗", "💝", "🌷", "🥰"];
-            heart.textContent = hearts[
-                Math.floor(Math.random() * hearts.length)
-            ];
-
-            heart.style.left = Math.random() * 95 + "vw";
-            heart.style.top = "95vh";
-
-            document.body.appendChild(heart);
-
-            setTimeout(() => heart.remove(), 4000);
-        }
-
-        function showNextMessage() {
-            currentMessageIndex =
-                (currentMessageIndex + 1) % sorryMessages.length;
-
-            mainText.innerHTML = sorryMessages[currentMessageIndex];
-
-            mainText.classList.remove("shake");
-            void mainText.offsetWidth;
-            mainText.classList.add("shake");
-
-            setTimeout(() => {
-                mainText.classList.remove("shake");
-            }, 400);
-
-            for (let i = 0; i < 2; i++) {
-                createHeart();
-            }
-        }
-
-        function moveNoButton() {
-            const area = buttonsContainer.getBoundingClientRect();
-            const button = noBtn.getBoundingClientRect();
-            const yes = yesBtn.getBoundingClientRect();
-
-            const maxX = Math.max(0, area.width - button.width - 8);
-            const maxY = Math.max(0, area.height - button.height - 8);
-
-            let x = 0;
-            let y = 0;
-
-            for (let i = 0; i < 40; i++) {
-                x = 4 + Math.random() * Math.max(0, maxX - 4);
-                y = 4 + Math.random() * Math.max(0, maxY - 4);
-
-                const left = area.left + x;
-                const top = area.top + y;
-
-                const overlapsYes = !(
-                    left + button.width + 12 < yes.left ||
-                    left - 12 > yes.right ||
-                    top + button.height + 12 < yes.top ||
-                    top - 12 > yes.bottom
-                );
-
-                if (!overlapsYes) break;
-            }
-
-            noBtn.style.left = x + "px";
-            noBtn.style.top = y + "px";
-            noBtn.style.transform = "none";
-
-            noClickCount++;
-
-            const scale = Math.max(0.75, 1 - noClickCount * 0.025);
-            noBtn.style.scale = String(scale);
-
-            if (noClickCount <= 5) {
-                clickCount.textContent =
-                    "¿Segurita que no, Marci? 🥺💕";
-            } else if (noClickCount <= 10) {
-                clickCount.textContent =
-                    "Tengo más disculpitas para ti 😭💗";
-            } else {
-                clickCount.textContent =
-                    "JAJAJA, este botoncito es muy escurridizo 🎀";
-            }
-        }
-
-        // En computadora, el botón se mueve al acercar el cursor.
-        if (!isMobile) {
-            noBtn.addEventListener("mouseenter", () => {
-                moveNoButton();
-                showNextMessage();
-            });
-        }
-
-        // En celular, el botón se mueve al tocarlo.
-        noBtn.addEventListener("click", (event) => {
-            event.preventDefault();
-            moveNoButton();
-            showNextMessage();
-        });
-
-        // Respuesta al pulsar Sí.
-        yesBtn.addEventListener("click", () => {
-            mainText.innerHTML =
-                "¡AY, MARCITA! 🥹💗<br>" +
-                "Gracias por leer mi disculpita, mi niña bonita.";
-
-            subtitle.innerHTML =
-                "Quiero que recuerdes que te amo muchísimo. " +
-                "Lo de esa foto no cambia lo que siento por ti. " +
-                "Me importa cómo te sientes y quiero que podamos " +
-                "hablar de todo con confianza, cariño y sinceridad. 💌";
-
-            emojiContainer.innerHTML = "💗🧸🎮🌷✨💌";
-            emojiContainer.classList.remove("hidden");
-
-            clickCount.innerHTML =
-                "Te debo esa partidita de Roblox. 🎮💕<br>" +
-                "Y muchos momentitos bonitos contigo. 💖";
-
-            buttonsContainer.style.display = "none";
-
-            footerText.innerHTML =
-                "Con todo mi cariño, para mi Marcita bonita. 💗";
-
-            document.body.style.background =
-                "linear-gradient(135deg, #ffc0cb, #ff69b4, #ffb6c1)";
-
-            for (let i = 0; i < 30; i++) {
-                setTimeout(() => createHeart(), i * 150);
-            }
-        });
-    </script>
+    setInterval(createHeart, 900);
+  </script>
 
 </body>
 </html>
-
